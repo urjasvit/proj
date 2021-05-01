@@ -22,7 +22,7 @@ def install(package):
 install('xlsxwriter')
 import xlsxwriter
 
-data=pd.read_csv("D:/NEU/ADM/Project/Python/data.csv")
+data=pd.read_csv("./data.csv")
 
 cat_vars=['job_type','marital','education','default','housing_loan','personal_loan','communication_type','day_of_month','month','prev_campaign_outcome']
 for var in cat_vars:
@@ -94,7 +94,7 @@ def reg(test_data):
 
 
 def retent():
-	segmentation=pd.read_csv("D:/NEU/ADM/Project/Python/segmentation_data.csv")
+	segmentation=pd.read_csv("./segmentation_data.csv")
 	previous_campaign = segmentation['prev_campaign_outcome'].value_counts()
 	st.table(previous_campaign)
 
@@ -154,7 +154,7 @@ elif add_selectbox == 'Customer Segmentation':
         import warnings
         from sklearn.cluster import KMeans
         warnings.filterwarnings("ignore")
-        data= pd.read_csv("D:/NEU/ADM/Project/Python/data.csv")
+        data= pd.read_csv("./data.csv")
         def order_cluster(cluster_field_name, target_field_name,df,ascending):
         	new_cluster_field_name = 'new_' + cluster_field_name
         	df_new = df.groupby(cluster_field_name)[target_field_name].mean().reset_index()
