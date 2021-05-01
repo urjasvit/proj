@@ -49,16 +49,17 @@ X.remove('id')
 temp = X
 
 
-logreg = LogisticRegression()
+#logreg = LogisticRegression()
 
-rfe = RFE(logreg, 18)
-rfe = rfe.fit(data_final[X], data_final[y] )
+#rfe = RFE(logreg, 18)
+#rfe = rfe.fit(data_final[X], data_final[y] )
 
-rk= rfe.ranking_
-cols=list()
-for x,y in zip(rk,temp):
-  if(x==1):
-    cols.append(y)
+#rk= rfe.ranking_
+#cols=list()
+#for x,y in zip(rk,temp):
+#  if(x==1):
+#    cols.append(y)
+cols=['marital_unknown', 'housing_loan_yes', 'communication_type_email', 'day_of_month_10', 'day_of_month_30', 'month_aug', 'month_dec', 'month_jan', 'month_jul', 'month_mar', 'month_may', 'month_nov', 'month_oct', 'month_sep', 'prev_campaign_outcome_failure', 'prev_campaign_outcome_other', 'prev_campaign_outcome_success', 'prev_campaign_outcome_unknown']
 
 X=data_final[cols]
 y=data_final['term_deposit_subscribed']
