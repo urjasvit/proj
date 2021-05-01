@@ -117,14 +117,17 @@ st.sidebar.subheader("SELECT FROM BELOW")
 add_selectbox = st.sidebar.radio("  ",
     ("Term Deposit Prediction", "Customer Segmentation" , "Customer Retention Metrics")
 )
-
+st.title("Enter the Data for Which You Want to Predict Term Deposit Below Information")
+uploaded_file = st.file_uploader("Choose a file")
+if uploaded_file is not None:
+	df = pd.read_csv(uploaded_file)
 if add_selectbox == 'Term Deposit Prediction' :
         st.title("Term Deposit Prediction")
         st.write("-------------------------------------------------------------------------------------------------")
-        st.write("Enter the Below Information")
-        uploaded_file = st.file_uploader("Choose a file")
-        if uploaded_file is not None:
-        	df = pd.read_csv(uploaded_file)
+        st.write("Click Predict to Get Downloadable Excel File Containing Prediction Output")
+        #uploaded_file = st.file_uploader("Choose a file")
+        #if uploaded_file is not None:
+        #	df = pd.read_csv(uploaded_file)
         
         if st.button("Predict"):
         	input_data = reg(df)
@@ -155,7 +158,7 @@ elif add_selectbox == 'Customer Segmentation':
         import warnings
         from sklearn.cluster import KMeans
         warnings.filterwarnings("ignore")
-        data= pd.read_csv("./data.csv")
+        data= df#pd.read_csv("./data.csv")
         def order_cluster(cluster_field_name, target_field_name,df,ascending):
         	new_cluster_field_name = 'new_' + cluster_field_name
         	df_new = df.groupby(cluster_field_name)[target_field_name].mean().reset_index()
